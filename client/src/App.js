@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+// client/src/App.js
+import React, { useState } from 'react';
+import CompanyList from './components/CompanyList';
+import EmailComposer from './components/EmailComposer';
+import StatusDashboard from './components/StatusDashboard';
 import './App.css';
 
+
 function App() {
+  const [emailResults, setEmailResults] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Smart JobMailer 💌</h1>
+      <CompanyList />
+      <hr />
+      <EmailComposer onSendComplete={setEmailResults} />
+      <hr />
+      <StatusDashboard results={emailResults} />
     </div>
   );
 }
